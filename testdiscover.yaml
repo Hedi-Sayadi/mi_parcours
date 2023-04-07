@@ -1,0 +1,36 @@
+services:
+  server_discovery:
+    build: 
+      context: ./discovery-server/
+    ports:
+      - 8761:8761
+    networks:
+      discovernet:
+        aliases:
+          - server_discovery
+          - api_gateway
+    environment:
+      - eureka.client.register-with-eureka=false
+      - eureka.client.fetch-registry=false
+  
+    
+  api_gateway:
+    build: 
+      context: ./api-Gateway/
+    ports:
+      - 8084:8084
+    networks:
+      discovernet:
+        aliases:
+          - server_discovery
+          - api_gateway
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://server_discovery:8761/eureka
+      - eureka.client.register-with-eureka=true
+      - eureka.client.fetch-registry=true
+    depends_on:
+      - server_discovery
+
+networks:
+  discovernet:
+    driver: bridge

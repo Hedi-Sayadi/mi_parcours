@@ -1,0 +1,7 @@
+P2M\ratingsdataservice\resources\MovieDataResource.class
+P2M\ratingsdataservice\models\Rating.class
+P2M\ratingsdataservice\models\UserRating.class
+P2M\ratingsdataservice\exception\RatingNotFoundException.class
+P2M\ratingsdataservice\service\RatingService.class
+P2M\ratingsdataservice\MovieDataServiceApplication.class
+P2M\ratingsdataservice\repository\RatingRepository.class
